@@ -1,0 +1,181 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/prooftree-app/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Latin Modern Math|Newsreader|Inter Tight|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Latin Modern Math, Newsreader, Inter Tight, JetBrains Mono."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--accent-deep",
+      "--accent-tint",
+      "--agent-ink",
+      "--draft",
+      "--draft-tint",
+      "--dur",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease",
+      "--fs-body",
+      "--fs-chrome",
+      "--fs-display",
+      "--fs-label",
+      "--fs-mono",
+      "--fs-small",
+      "--fs-title",
+      "--hair",
+      "--hair-dashed",
+      "--hairline",
+      "--ident-blue",
+      "--ident-green",
+      "--ident-red",
+      "--ident-yellow",
+      "--ink",
+      "--ink-faint",
+      "--ink-muted",
+      "--left-rail-w",
+      "--lh-body",
+      "--lh-display",
+      "--lh-title",
+      "--math",
+      "--mono",
+      "--paper",
+      "--paper-deep",
+      "--paper-press",
+      "--radius",
+      "--radius-chip",
+      "--rail-accent",
+      "--rail-verified",
+      "--reading-w",
+      "--right-rail-w",
+      "--sans",
+      "--serif",
+      "--space-1",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--stub",
+      "--stub-tint",
+      "--tabbar-h",
+      "--topbar-h",
+      "--verified",
+      "--verified-tint"
+    ],
+    "tokenKinds": {
+      "--paper": "color",
+      "--paper-deep": "color",
+      "--paper-press": "color",
+      "--ink": "color",
+      "--ink-muted": "color",
+      "--ink-faint": "color",
+      "--hairline": "color",
+      "--accent": "color",
+      "--accent-deep": "color",
+      "--accent-tint": "color",
+      "--verified": "color",
+      "--verified-tint": "color",
+      "--stub": "color",
+      "--stub-tint": "color",
+      "--draft": "color",
+      "--draft-tint": "color",
+      "--agent-ink": "color",
+      "--ident-yellow": "color",
+      "--ident-green": "color",
+      "--ident-blue": "color",
+      "--ident-red": "color",
+      "--serif": "font",
+      "--sans": "font",
+      "--mono": "font",
+      "--math": "font",
+      "--fs-display": "spacing",
+      "--fs-title": "spacing",
+      "--fs-body": "spacing",
+      "--fs-small": "spacing",
+      "--fs-label": "spacing",
+      "--fs-chrome": "spacing",
+      "--fs-mono": "spacing",
+      "--lh-display": "font",
+      "--lh-title": "font",
+      "--lh-body": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--radius-chip": "radius",
+      "--radius": "radius",
+      "--hair": "color",
+      "--hair-dashed": "color",
+      "--rail-accent": "color",
+      "--rail-verified": "color",
+      "--ease": "other",
+      "--dur-fast": "other",
+      "--dur": "other",
+      "--dur-slow": "other",
+      "--topbar-h": "other",
+      "--tabbar-h": "other",
+      "--right-rail-w": "other",
+      "--left-rail-w": "other",
+      "--reading-w": "other"
+    },
+    "fontFamilies": [
+      "Inter Tight",
+      "JetBrains Mono",
+      "Latin Modern Math",
+      "Newsreader"
+    ]
+  }
+}

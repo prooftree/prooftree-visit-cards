@@ -1,0 +1,19 @@
+/* =============================================================================
+   styles.css — canonical entry point for the ProofTree design system
+   -----------------------------------------------------------------------------
+   Link THIS one file and you get the full v2.1 register (cool off-white paper,
+   Newsreader, burgundy). It pulls in the token + semantic layer below.
+
+       <link rel="stylesheet" href="styles.css" />
+
+   WHAT THIS DOES NOT IMPORT — and why:
+   • repo-bridge.css — a DELIBERATELY SEPARATE register that mirrors the live
+     `lemmafora` repo (warm cream, EB Garamond, terracotta). It redefines the
+     same :root token names with different values, so loading it alongside this
+     file would clobber the v2.1 tokens. Use repo-bridge.css INSTEAD of this
+     file for drop-in/production work — never together. See PORTING.md §0.
+   • preview/card.css — styling for the Design System tab preview cards only;
+     not part of the consumable token system.
+   ============================================================================= */
+
+@import url('colors_and_type.css');

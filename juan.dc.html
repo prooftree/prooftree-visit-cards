@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Juan M. Duran · ProofTree</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/styles.css">
+  <script src="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--paper-deep); }
+    @media print {
+      html, body { background: var(--paper); }
+      [data-noprint] { display: none !important; }
+      [data-printonly] { display: block !important; }
+      [data-card] { border-color: var(--hairline) !important; }
+    }
+  </style>
+</helmet>
+<div data-screen-label="Juan M. Duran" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 44px 16px 36px; box-sizing: border-box;">
+  <a href="https://prooftree.ai" style="display: inline-flex; align-items: baseline; gap: 6px; color: var(--ink); text-decoration: none;">
+    <span style="font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1;">∀</span>
+    <span style="font-family: var(--serif); font-size: 23px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
+  </a>
+  <div class="flourish" style="font-size: 15px; margin-top: 6px;" data-noprint>a social reasoning space for mathematics</div>
+  <div data-card style="width: 100%; max-width: 400px; margin-top: 28px; background: var(--paper); border: 1px solid var(--hairline); border-left: 3px solid var(--accent); border-radius: 6px; padding: 32px 24px 24px; box-sizing: border-box; text-align: center;">
+    <div style="width: 160px; height: 160px; margin: 0 auto; border: 1px solid var(--hairline); border-radius: {{ photoRadius }}; overflow: hidden;">
+      <img src="assets/photos/juan.jpg" alt="Juan M. Duran" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; display: block;">
+    </div>
+    <h1 style="font-size: 30px; margin-top: 24px;">Juan M. Duran</h1>
+    <div class="label" style="margin-top: 12px; font-size: 12px; letter-spacing: 0.1em;">Co-founder · ProofTree</div>
+    <div style="margin-top: 12px;"><span class="tag">COO</span></div>
+    <div style="margin-top: 16px;"><a href="mailto:juan@prooftree.ai" style="font-family: var(--mono); font-size: 14px;">juan@prooftree.ai</a></div>
+    <div class="mono" data-printonly style="display: none; margin-top: 12px; font-size: 13px; color: var(--ink-muted);">prooftree.ai</div>
+    <div data-noprint>
+      <a class="btn btn--primary" href="vcards/juan.vcf" download="juan-duran.vcf" style="width: 100%; justify-content: center; min-height: 48px; font-size: 14px; margin-top: 24px; box-sizing: border-box;">save contact ↓</a>
+      <div style="display: flex; gap: 8px; margin-top: 8px;">
+        <a class="btn" href="mailto:juan@prooftree.ai" style="flex: 1; justify-content: center; min-height: 46px; font-size: 14px; box-sizing: border-box;">email</a>
+        
+      </div>
+      <hr style="margin: 24px 0 16px;">
+      <div style="display: flex; gap: 8px;">
+        <a class="btn btn--ghost" href="passes/juan.pkpass" style="flex: 1; justify-content: center; min-height: 44px; font-size: 13px; box-sizing: border-box; display: {{ walletDisplay }};">add to wallet</a>
+        <button type="button" class="btn btn--ghost" onClick="{{ printPage }}" style="flex: 1; justify-content: center; min-height: 44px; font-size: 13px; box-sizing: border-box;">download pdf ↓</button>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 24px; text-align: center;" data-noprint>
+    <a href="https://prooftree.ai" style="font-family: var(--mono); font-size: 14px;">prooftree.ai →</a>
+    <div class="label" style="margin-top: 14px; font-size: 10px;">© 2026 ProofTree</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;photoShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;square&quot;,&quot;circle&quot;],&quot;default&quot;:&quot;square&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Card&quot;},&quot;showWallet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Card&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      printPage: () => window.print(),
+      photoRadius: (this.props.photoShape ?? 'square') === 'circle' ? '50%' : '6px',
+      walletDisplay: (this.props.showWallet ?? true) ? 'inline-flex' : 'none',
+    };
+  }
+}
+</script>
+</body>
+</html>
