@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>ProofTree · Wallet visit cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/styles.css">
+  <script src="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/_ds_bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+  <style>html, body { margin: 0; padding: 0; background: var(--paper-deep); }</style>
+</helmet>
+<div data-screen-label="Wallet visit cards" style="min-height: 100vh; padding: 48px 32px 64px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center;">
+  <div class="label" style="font-size: 11px;">ProofTree · wallet passes</div>
+  <div class="flourish" style="font-size: 15px; margin-top: 8px;">the card that lives on the phone — every code scans to the live page ↓</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 36px;">
+    <sc-for list="{{ founders }}" as="f" hint-placeholder-count="4">
+      <div style="width: 340px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 10px; padding: 18px 20px 22px; box-sizing: border-box; display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="display: inline-flex; align-items: baseline; gap: 5px; color: var(--ink);">
+            <span style="font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1;">∀</span>
+            <span style="font-family: var(--serif); font-size: 17px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
+          </span>
+          <span class="label" style="font-size: 9px;">{{ f.serial }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 22px;">
+          <div style="min-width: 0;">
+            <div class="label" style="font-size: 10px; color: var(--accent);">Co-founder</div>
+            <div style="font-family: var(--serif); font-size: 23px; font-weight: 500; line-height: 1.2; color: var(--ink); margin-top: 6px; text-wrap: balance;">{{ f.name }}</div>
+          </div>
+          <img src="{{ f.photo }}" alt="{{ f.name }}" style="width: 64px; height: 64px; border-radius: 6px; object-fit: cover; border: 1px solid var(--hairline); flex-shrink: 0;">
+        </div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 18px;">
+          <div>
+            <div class="label" style="font-size: 9px;">Role</div>
+            <div style="font-family: var(--mono); font-size: 13px; color: var(--ink); margin-top: 3px;">{{ f.role }}</div>
+          </div>
+          <div style="text-align: right; min-width: 0;">
+            <div class="label" style="font-size: 9px;">Email</div>
+            <div style="font-family: var(--mono); font-size: 12px; color: var(--ink); margin-top: 3px;">{{ f.email }}</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); display: flex; flex-direction: column; align-items: center;">
+          <canvas id="qr-{{ f.id }}" width="240" height="240" style="width: 156px; height: 156px; image-rendering: pixelated; border: 1px solid var(--hairline); border-radius: 6px;"></canvas>
+          <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-muted); margin-top: 8px;">{{ f.short }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="width: 100%; max-width: 740px; margin-top: 56px;">
+    <div class="label" style="font-size: 10px;">Pass assets · auto-captured for the .pkpass build</div>
+    <div style="display: flex; align-items: flex-end; gap: 32px; margin-top: 14px; padding: 20px; background: var(--paper); border: 1px dashed var(--hairline); border-radius: 6px;">
+      <div>
+        <div id="asset-logo" style="width: 160px; height: 50px; display: flex; align-items: center;">
+          <span style="display: inline-flex; align-items: baseline; gap: 6px; color: var(--ink);">
+            <span style="font-family: var(--serif); font-size: 23px; font-weight: 500; line-height: 1;">∀</span>
+            <span style="font-family: var(--serif); font-size: 22px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
+          </span>
+        </div>
+        <div class="label" style="font-size: 9px; margin-top: 6px;">logo · 160×50pt</div>
+      </div>
+      <div>
+        <div id="asset-icon" style="width: 29px; height: 29px; background: var(--paper-deep); border: 1px solid var(--hairline); box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--accent); line-height: 1;">∀</span>
+        </div>
+        <div class="label" style="font-size: 9px; margin-top: 6px;">icon · 29×29pt</div>
+      </div>
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-muted); line-height: 1.6; margin-left: auto; max-width: 300px;">spec for Claude Code → wallet-pass-spec.md<br>thumbnails → assets/wallet/</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;qrCenterGlyph&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;QR&quot;}}">
+class Component extends DCLogic {
+  founders() {
+    const base = 'https://hi.prooftree.ai/';
+    return [
+      { id: 'carl', name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai', serial: 'PT · 2026 · 01', url: base + 'carl', short: 'hi.prooftree.ai/carl', photo: 'assets/photos/carl.jpg' },
+      { id: 'juan', name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai', serial: 'PT · 2026 · 02', url: base + 'juan', short: 'hi.prooftree.ai/juan', photo: 'assets/photos/juan.jpg' },
+      { id: 'raj', name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai', serial: 'PT · 2026 · 03', url: base + 'raj', short: 'hi.prooftree.ai/raj', photo: 'assets/photos/raj.jpg' },
+      { id: 'yola', name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai', serial: 'PT · 2026 · 04', url: base + 'yola', short: 'hi.prooftree.ai/yola', photo: 'assets/photos/yola.jpg' },
+    ];
+  }
+  renderVals() { return { founders: this.founders() }; }
+  componentDidMount() {
+    let tries = 0;
+    this.timer = setInterval(() => {
+      if (window.qrcode) { clearInterval(this.timer); document.fonts.ready.then(() => this.drawAll()); }
+      else if (++tries > 60) clearInterval(this.timer);
+    }, 100);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  drawAll() {
+    const showGlyph = this.props.qrCenterGlyph ?? true;
+    for (const f of this.founders()) {
+      const c = document.getElementById('qr-' + f.id);
+      if (!c) continue;
+      const qr = window.qrcode(0, 'H');
+      qr.addData(f.url); qr.make();
+      const n = qr.getModuleCount(), s = 8, q = 4, size = (n + q * 2) * s;
+      c.width = size; c.height = size;
+      const x = c.getContext('2d');
+      x.fillStyle = '#FBF8EF'; x.fillRect(0, 0, size, size);
+      x.fillStyle = '#1A1612';
+      for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (qr.isDark(r, col)) x.fillRect((col + q) * s, (r + q) * s, s, s);
+      if (showGlyph) {
+        let box = Math.floor(n * 0.26); if (box % 2 !== n % 2) box++;
+        const off = Math.floor((n - box) / 2);
+        x.fillStyle = '#FBF8EF'; x.fillRect((off + q) * s, (off + q) * s, box * s, box * s);
+        x.fillStyle = '#9A3D2F';
+        x.font = '500 ' + Math.floor(box * s * 0.66) + 'px Newsreader, serif';
+        x.textAlign = 'center'; x.textBaseline = 'middle';
+        x.fillText('∀', size / 2, size / 2 + box * s * 0.03);
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

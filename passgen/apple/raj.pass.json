@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.ai.prooftree.card",
+  "teamIdentifier": "TEAMID",
+  "serialNumber": "PT-2026-03",
+  "organizationName": "ProofTree",
+  "description": "ProofTree founder card — Raj Maiti",
+  "backgroundColor": "rgb(236,229,208)",
+  "foregroundColor": "rgb(26,22,18)",
+  "labelColor": "rgb(154,61,47)",
+  "generic": {
+    "primaryFields": [{ "key": "name", "label": "CO-FOUNDER", "value": "Raj Maiti" }],
+    "secondaryFields": [
+      { "key": "role", "label": "ROLE", "value": "co-CEO" },
+      { "key": "email", "label": "EMAIL", "value": "raj@prooftree.ai" }
+    ],
+    "backFields": [
+      { "key": "web", "label": "WEBSITE", "value": "https://prooftree.ai" },
+      { "key": "card", "label": "CARD", "value": "https://hi.prooftree.ai/raj" },
+      { "key": "li", "label": "LINKEDIN", "value": "https://www.linkedin.com/in/1729/" }
+    ]
+  },
+  "barcodes": [{ "format": "PKBarcodeFormatQR", "message": "https://hi.prooftree.ai/raj", "messageEncoding": "iso-8859-1", "altText": "hi.prooftree.ai" }],
+  "barcode": { "format": "PKBarcodeFormatQR", "message": "https://hi.prooftree.ai/raj", "messageEncoding": "iso-8859-1", "altText": "hi.prooftree.ai" }
+}

@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.ai.prooftree.card",
+  "teamIdentifier": "TEAMID",
+  "serialNumber": "PT-2026-02",
+  "organizationName": "ProofTree",
+  "description": "ProofTree founder card — Juan M. Duran",
+  "backgroundColor": "rgb(236,229,208)",
+  "foregroundColor": "rgb(26,22,18)",
+  "labelColor": "rgb(154,61,47)",
+  "generic": {
+    "primaryFields": [{ "key": "name", "label": "CO-FOUNDER", "value": "Juan M. Duran" }],
+    "secondaryFields": [
+      { "key": "role", "label": "ROLE", "value": "COO" },
+      { "key": "email", "label": "EMAIL", "value": "juan@prooftree.ai" }
+    ],
+    "backFields": [
+      { "key": "web", "label": "WEBSITE", "value": "https://prooftree.ai" },
+      { "key": "card", "label": "CARD", "value": "https://hi.prooftree.ai/juan" }
+    ]
+  },
+  "barcodes": [{ "format": "PKBarcodeFormatQR", "message": "https://hi.prooftree.ai/juan", "messageEncoding": "iso-8859-1", "altText": "hi.prooftree.ai" }],
+  "barcode": { "format": "PKBarcodeFormatQR", "message": "https://hi.prooftree.ai/juan", "messageEncoding": "iso-8859-1", "altText": "hi.prooftree.ai" }
+}
