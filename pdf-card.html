@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProofTree · visit card</title>
+<link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/colors_and_type.css">
+<link rel="stylesheet" href="_ds/prooftree-design-system-ea6ba940-5be0-4728-9069-c9cc2eb79278/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  @page { size: 105mm 148mm; margin: 0; }
+  html, body {
+    margin: 0; padding: 0; background: var(--paper-deep);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<div id="card" style="width: 340px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 10px; padding: 18px 20px 22px; box-sizing: border-box; display: flex; flex-direction: column;">
+  <div style="display: flex; align-items: baseline; justify-content: space-between;">
+    <span style="display: inline-flex; align-items: baseline; gap: 5px; color: var(--ink);">
+      <span style="font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1;">∀</span>
+      <span style="font-family: var(--serif); font-size: 17px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
+    </span>
+    <span class="label" style="font-size: 9px;" id="f-serial"></span>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 22px;">
+    <div style="min-width: 0;">
+      <div class="label" style="font-size: 10px; color: var(--accent);">Co-founder</div>
+      <div style="font-family: var(--serif); font-size: 23px; font-weight: 500; line-height: 1.2; color: var(--ink); margin-top: 6px; text-wrap: balance;" id="f-name"></div>
+    </div>
+    <img id="f-photo" src="" alt="" style="width: 64px; height: 64px; border-radius: 6px; object-fit: cover; border: 1px solid var(--hairline); flex-shrink: 0;">
+  </div>
+  <div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 18px;">
+    <div>
+      <div class="label" style="font-size: 9px;">Role</div>
+      <div style="font-family: var(--mono); font-size: 13px; color: var(--ink); margin-top: 3px;" id="f-role"></div>
+    </div>
+    <div style="text-align: right; min-width: 0;">
+      <div class="label" style="font-size: 9px;">Email</div>
+      <div style="font-family: var(--mono); font-size: 12px; color: var(--ink); margin-top: 3px;" id="f-email"></div>
+    </div>
+  </div>
+  <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); display: flex; flex-direction: column; align-items: center;">
+    <canvas id="qr" width="240" height="240" style="width: 156px; height: 156px; image-rendering: pixelated; border: 1px solid var(--hairline); border-radius: 6px;"></canvas>
+    <div style="font-family: var(--mono); font-size: 9px; color: var(--ink-muted); margin-top: 8px;" id="f-short"></div>
+  </div>
+</div>
+<script>
+const FOUNDERS = {
+  carl: { name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai', serial: 'PT · 2026 · 01' },
+  juan: { name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai', serial: 'PT · 2026 · 02' },
+  raj:  { name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai', serial: 'PT · 2026 · 03' },
+  yola: { name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai', serial: 'PT · 2026 · 04' },
+};
+const id = new URLSearchParams(location.search).get('id') || 'carl';
+const f = FOUNDERS[id] || FOUNDERS.carl;
+const url = 'https://hi.prooftree.ai/' + id;
+
+document.getElementById('f-serial').textContent = f.serial;
+document.getElementById('f-name').textContent = f.name;
+document.getElementById('f-role').textContent = f.role;
+document.getElementById('f-email').textContent = f.email;
+document.getElementById('f-short').textContent = 'hi.prooftree.ai/' + id;
+const photo = document.getElementById('f-photo');
+photo.src = 'assets/photos/' + id + '.jpg';
+photo.alt = f.name;
+
+// Same QR drawing as wallet-cards.html, at 2x module size for print sharpness.
+function drawQR() {
+  const c = document.getElementById('qr');
+  const qr = window.qrcode(0, 'H');
+  qr.addData(url); qr.make();
+  const n = qr.getModuleCount(), s = 16, q = 4, size = (n + q * 2) * s;
+  c.width = size; c.height = size;
+  const x = c.getContext('2d');
+  x.fillStyle = '#FBF8EF'; x.fillRect(0, 0, size, size);
+  x.fillStyle = '#1A1612';
+  for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (qr.isDark(r, col)) x.fillRect((col + q) * s, (r + q) * s, s, s);
+  let box = Math.floor(n * 0.26); if (box % 2 !== n % 2) box++;
+  const off = Math.floor((n - box) / 2);
+  x.fillStyle = '#FBF8EF'; x.fillRect((off + q) * s, (off + q) * s, box * s, box * s);
+  x.fillStyle = '#9A3D2F';
+  x.font = '500 ' + Math.floor(box * s * 0.66) + 'px Newsreader, serif';
+  x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.fillText('∀', size / 2, size / 2 + box * s * 0.03);
+}
+document.fonts.ready.then(drawQR);
+</script>
+</body>
+</html>
