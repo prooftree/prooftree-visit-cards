@@ -18,12 +18,11 @@
 </head>
 <body>
 <div id="card" style="width: 340px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 10px; padding: 18px 20px 22px; box-sizing: border-box; display: flex; flex-direction: column;">
-  <div style="display: flex; align-items: baseline; justify-content: space-between;">
+  <div style="display: flex; align-items: baseline;">
     <span style="display: inline-flex; align-items: baseline; gap: 5px; color: var(--ink);">
       <span style="font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1;">∀</span>
       <span style="font-family: var(--serif); font-size: 17px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
     </span>
-    <span class="label" style="font-size: 9px;" id="f-serial"></span>
   </div>
   <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 22px;">
     <div style="min-width: 0;">
@@ -49,16 +48,15 @@
 </div>
 <script>
 const FOUNDERS = {
-  carl: { name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai', serial: 'PT · 2026 · 01' },
-  juan: { name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai', serial: 'PT · 2026 · 02' },
-  raj:  { name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai', serial: 'PT · 2026 · 03' },
-  yola: { name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai', serial: 'PT · 2026 · 04' },
+  carl: { name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai' },
+  juan: { name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai' },
+  raj:  { name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai' },
+  yola: { name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai' },
 };
 const id = new URLSearchParams(location.search).get('id') || 'carl';
 const f = FOUNDERS[id] || FOUNDERS.carl;
 const url = 'https://hi.prooftree.ai/' + id;
 
-document.getElementById('f-serial').textContent = f.serial;
 document.getElementById('f-name').textContent = f.name;
 document.getElementById('f-role').textContent = f.role;
 document.getElementById('f-email').textContent = f.email;

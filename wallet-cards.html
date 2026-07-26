@@ -23,12 +23,11 @@
   <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 36px;">
     <sc-for list="{{ founders }}" as="f" hint-placeholder-count="4">
       <div style="width: 340px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 10px; padding: 18px 20px 22px; box-sizing: border-box; display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <div style="display: flex; align-items: baseline;">
           <span style="display: inline-flex; align-items: baseline; gap: 5px; color: var(--ink);">
             <span style="font-family: var(--serif); font-size: 18px; font-weight: 500; line-height: 1;">∀</span>
             <span style="font-family: var(--serif); font-size: 17px; line-height: 1;"><span style="font-style: italic;">proof</span><span>Tree</span></span>
           </span>
-          <span class="label" style="font-size: 9px;">{{ f.serial }}</span>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 22px;">
           <div style="min-width: 0;">
@@ -82,10 +81,10 @@ class Component extends DCLogic {
   founders() {
     const base = 'https://hi.prooftree.ai/';
     return [
-      { id: 'carl', name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai', serial: 'PT · 2026 · 01', url: base + 'carl', short: 'hi.prooftree.ai/carl', photo: 'assets/photos/carl.jpg' },
-      { id: 'juan', name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai', serial: 'PT · 2026 · 02', url: base + 'juan', short: 'hi.prooftree.ai/juan', photo: 'assets/photos/juan.jpg' },
-      { id: 'raj', name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai', serial: 'PT · 2026 · 03', url: base + 'raj', short: 'hi.prooftree.ai/raj', photo: 'assets/photos/raj.jpg' },
-      { id: 'yola', name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai', serial: 'PT · 2026 · 04', url: base + 'yola', short: 'hi.prooftree.ai/yola', photo: 'assets/photos/yola.jpg' },
+      { id: 'carl', name: 'Carl W. Jontza', role: 'co-CEO', email: 'carl@prooftree.ai', url: base + 'carl', short: 'hi.prooftree.ai/carl', photo: 'assets/photos/carl.jpg' },
+      { id: 'juan', name: 'Juan M. Duran', role: 'COO', email: 'juan@prooftree.ai', url: base + 'juan', short: 'hi.prooftree.ai/juan', photo: 'assets/photos/juan.jpg' },
+      { id: 'raj', name: 'Raj Maiti', role: 'co-CEO', email: 'raj@prooftree.ai', url: base + 'raj', short: 'hi.prooftree.ai/raj', photo: 'assets/photos/raj.jpg' },
+      { id: 'yola', name: 'Xuan Yu Yola Zhou', role: 'CFO', email: 'yola@prooftree.ai', url: base + 'yola', short: 'hi.prooftree.ai/yola', photo: 'assets/photos/yola.jpg' },
     ];
   }
   renderVals() { return { founders: this.founders() }; }
