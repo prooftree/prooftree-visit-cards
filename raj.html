@@ -57,13 +57,13 @@
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;photoShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;square&quot;,&quot;circle&quot;],&quot;default&quot;:&quot;square&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Card&quot;},&quot;showWallet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Card&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;photoShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;square&quot;,&quot;circle&quot;],&quot;default&quot;:&quot;square&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Card&quot;},&quot;showWallet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Card&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     return {
       printPage: () => window.print(),
       photoRadius: (this.props.photoShape ?? 'square') === 'circle' ? '50%' : '6px',
-      walletDisplay: (this.props.showWallet ?? true) ? 'inline-flex' : 'none',
+      walletDisplay: (this.props.showWallet ?? false) ? 'inline-flex' : 'none',
     };
   }
 }
